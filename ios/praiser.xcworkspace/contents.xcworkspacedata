@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:assets">
+   </FileRef>
+   <FileRef
+      location = "group:main.jsbundle">
+   </FileRef>
+   <FileRef
+      location = "group:Podfile">
+   </FileRef>
+   <FileRef
+      location = "group:Podfile.lock">
+   </FileRef>
+   <FileRef
+      location = "group:Pods">
+   </FileRef>
+   <FileRef
+      location = "group:praiser">
+   </FileRef>
+   <FileRef
+      location = "group:praiserTests">
+   </FileRef>
+   <FileRef
+      location = "group:praiser.xcodeproj">
+   </FileRef>
+</Workspace>
