@@ -38,10 +38,10 @@ function HomeWithDrawer() {
 
 function StatisticsWithDrawer() {
   return (
-    <HomeDrawer.Navigator>
-      <HomeDrawer.Screen name={STATISTICS} component={Statistics} />
-      <HomeDrawer.Screen name={USER_INFO} component={UserInfo} />
-    </HomeDrawer.Navigator>
+    <StatisticsDrawer.Navigator>
+      <StatisticsDrawer.Screen name={STATISTICS} component={Statistics} />
+      <StatisticsDrawer.Screen name={USER_INFO} component={UserInfo} />
+    </StatisticsDrawer.Navigator>
   );
 }
 
