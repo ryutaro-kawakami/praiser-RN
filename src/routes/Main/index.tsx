@@ -24,6 +24,20 @@ const Tab = createBottomTabNavigator();
 const HomeDrawer = createDrawerNavigator();
 const StatisticsDrawer = createDrawerNavigator();
 
+const getActiveRouteName = (state: any): string => {
+  if (!state || !state.routes) {
+    return '';
+  }
+
+  const route = state.routes[state.index];
+  console.log(route);
+  // if (route.state) {
+  //   return getActiveRouteName(route.state);
+  // }
+
+  return route.name;
+};
+
 const forFade = ({current}: StackCardInterpolationProps) => ({
   cardStyle: {opacity: current.progress},
 });
@@ -47,7 +61,15 @@ function StatisticsWithDrawer() {
 
 function TabRoutes() {
   return (
-    <Tab.Navigator initialRouteName={HOME}>
+    <Tab.Navigator
+      initialRouteName={HOME}
+      screenOptions={(props: any) => {
+        const routeName = getActiveRouteName(props.route.state);
+
+        return {
+          tabBarVisible: routeName !== USER_INFO,
+        };
+      }}>
       <Tab.Screen name={HOME} component={HomeWithDrawer} />
       <Tab.Screen name={STATISTICS} component={StatisticsWithDrawer} />
     </Tab.Navigator>
