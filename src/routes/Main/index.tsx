@@ -30,10 +30,10 @@ const getActiveRouteName = (state: any): string => {
   }
 
   const route = state.routes[state.index];
-  console.log(route);
-  // if (route.state) {
-  //   return getActiveRouteName(route.state);
-  // }
+
+  if (route.state) {
+    return getActiveRouteName(route.state);
+  }
 
   return route.name;
 };
@@ -65,6 +65,8 @@ function TabRoutes() {
       initialRouteName={HOME}
       screenOptions={(props: any) => {
         const routeName = getActiveRouteName(props.route.state);
+        console.log('routeName', routeName);
+        // console.log('routeName', routeName);
 
         return {
           tabBarVisible: routeName !== USER_INFO,
