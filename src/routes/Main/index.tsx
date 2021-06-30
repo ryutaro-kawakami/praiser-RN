@@ -94,10 +94,15 @@ function TabRoutes() {
   return (
     <Tab.Navigator
       initialRouteName={HOME}
+      tabBarOptions={{
+        inactiveTintColor: COLOR.WHITE,
+        activeTintColor: COLOR.PRIMARY,
+        style: {
+          backgroundColor: COLOR.MAIN,
+        },
+      }}
       screenOptions={(props: any) => {
         const routeName = getActiveRouteName(props.route.state);
-        console.log('routeName', routeName);
-        // console.log('routeName', routeName);
 
         return {
           tabBarVisible: routeName !== USER_INFO,
