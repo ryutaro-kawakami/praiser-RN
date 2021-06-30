@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {SIGN_IN, SIGN_UP} from '../../../constants/path';
 import {Button, Logo} from '../../atoms';
@@ -9,8 +9,7 @@ const padding = 20;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: COLOR.MAIN,
   },
   imageContainer: {
     flex: 1,
