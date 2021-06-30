@@ -3,6 +3,8 @@ import {
   createStackNavigator,
   StackCardInterpolationProps,
 } from '@react-navigation/stack';
+import {COLOR} from '../../constants/theme';
+import {headerStyle, headerTintColor} from '../Header';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {
@@ -35,6 +37,9 @@ const ChooseLoginStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const HomeDrawer = createDrawerNavigator();
 const StatisticsDrawer = createDrawerNavigator();
+const cardStyle = {
+  backgroundColor: COLOR.MAIN,
+};
 
 const getActiveRouteName = (state: any): string => {
   if (!state || !state.routes) {
@@ -92,7 +97,10 @@ function TabRoutes() {
 
 function TabWithModalRoutes() {
   return (
-    <ModalStack.Navigator mode="modal" headerMode="none">
+    <ModalStack.Navigator
+      mode="modal"
+      headerMode="none"
+      screenOptions={{cardStyle}}>
       <Stack.Screen name={HOME} component={TabRoutes} />
       <Stack.Screen name={INPUT} component={Input} />
     </ModalStack.Navigator>
@@ -101,7 +109,9 @@ function TabWithModalRoutes() {
 
 function ChooseLoginNavigator() {
   return (
-    <ChooseLoginStack.Navigator initialRouteName={CHOOSE_LOGIN}>
+    <ChooseLoginStack.Navigator
+      initialRouteName={CHOOSE_LOGIN}
+      screenOptions={{cardStyle, headerStyle, headerTintColor}}>
       <ChooseLoginStack.Screen name={CHOOSE_LOGIN} component={ChooseLogin} />
       <ChooseLoginStack.Screen name={SIGN_IN} component={SignIn} />
       <ChooseLoginStack.Screen name={SIGN_UP} component={SignUp} />
