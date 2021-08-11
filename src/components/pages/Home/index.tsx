@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 // import analytics from '@react-native-firebase/analytics';
 
-import Todos, {Todo} from '../../organisms/Todos';
+import Todos, {Todo, State as TodosState} from '../../organisms/Todos';
 import {COLOR} from '../../../constants/theme';
 import {DETAIL, INPUT} from '../../../constants/path';
 // import testIDs from '../../../constants/testIDs';
@@ -35,30 +35,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const todos = [
-  {
-    id: '1',
-    title: 'Todo',
-    detail: 'to do',
-    isDone: false,
-  },
-  {
-    id: '2',
-    title: 'Done',
-    detail: 'done task',
-    isDone: true,
-  },
-];
+interface Props {
+  todos: TodosState;
+  actions: {
+    toggleTodo: Todo.DoneButton.ToggleTodo;
+    removeTodo: Todo.DeleteButton.RemoveTodo;
+  };
+}
 
-// interface Props {
-//   todos: TodosState;
-//   actions: {
-//     toggleTodo: Todo.DoneButton.ToggleTodo;
-//     removeTodo: Todo.DeleteButton.RemoveTodo;
-//   };
-// }
-
-export default function Home() {
+export default function Home(props: Props) {
   // React.useEffect(() => {
   //   async function logViewItemList() {
   //     await analytics().logViewItemList({
@@ -80,20 +65,17 @@ export default function Home() {
   );
   const actions = React.useMemo(
     () => ({
-      // ...props.actions,
-      removeTodo: () => {},
-      toggoleTodo: () => {},
+      ...props.actions,
       gotoDetail,
     }),
-    // [gotoDetail, props.actions],
-    [gotoDetail],
+    [gotoDetail, props.actions],
   );
 
   return (
     // <View style={styles.container} testID={testIDs.HOME}>
     <View style={styles.container}>
       {/* <Todos isEditable todos={props.todos} actions={actions} /> */}
-      <Todos isEditable todos={todos} actions={{...actions, gotoDetail}} />
+      <Todos isEditable todos={props.todos} actions={actions} />
       {/* <TouchableOpacity
         onPress={onPress}
         style={styles.button}
