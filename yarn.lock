@@ -1021,6 +1021,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@react-native-community/async-storage@https://github.com/januswel/async-storage.git#add-typings-of-mock":
+  version "1.6.3"
+  resolved "https://github.com/januswel/async-storage.git#9f49f5f2bcfa08375fe5543e370fc90e0e39be47"
+
 "@react-native-community/cli-debugger-ui@^5.0.1-alpha.1":
   version "5.0.1-alpha.1"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-5.0.1-alpha.1.tgz#09a856ccd2954cf16eea59b14dd26ae66720e4e6"
