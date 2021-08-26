@@ -20,12 +20,12 @@ import {
 } from '../../constants/path';
 import {
   Initial,
-  Loading,
   ChooseLogin,
   Input,
   SignIn,
   SignUp,
 } from '../../components/pages';
+import {Loading} from '../../containers';
 import Home from './Home';
 import Statistics from './Statistics';
 import UserInfo from './UserInfo';
