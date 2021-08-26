@@ -8,6 +8,7 @@ import NetworkPanel from './components/molecules/NetworkPanel';
 
 import store from './store';
 import * as UiContext from './contexts/ui';
+import * as UserContext from './contexts/user';
 import Routes from './routes';
 import ErrorPanel from './components/molecules/ErrorPanel';
 
@@ -18,6 +19,9 @@ export default function App() {
   const [networkState, dispatchNetworkActions] = React.useReducer(
     NetworkContext.reducer,
     NetworkContext.createInitialState(),
+  );
+  const [userState, setUserState] = React.useState(
+    UserContext.createInitialState(),
   );
   const [error, setError] = React.useState(UiContext.createErrorInitialState());
   const [snackbar, setSnackbar] = React.useState(
@@ -41,15 +45,17 @@ export default function App() {
           }}>
           <NetworkContext.Context.Provider
             value={{networkState, dispatchNetworkActions}}>
-            <Routes />
-            <NetworkPanel />
-            <ErrorPanel />
-            <Snackbar
-              visible={snackbar.visible}
-              onDismiss={onDismiss}
-              action={{label: snackbar.label, onPress: onDismiss}}>
-              {snackbar.message}
-            </Snackbar>
+            <UserContext.Context.Provider value={{userState, setUserState}}>
+              <Routes />
+              <NetworkPanel />
+              <ErrorPanel />
+              <Snackbar
+                visible={snackbar.visible}
+                onDismiss={onDismiss}
+                action={{label: snackbar.label, onPress: onDismiss}}>
+                {snackbar.message}
+              </Snackbar>
+            </UserContext.Context.Provider>
           </NetworkContext.Context.Provider>
         </UiContext.Context.Provider>
       </SafeAreaProvider>
