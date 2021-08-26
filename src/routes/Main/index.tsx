@@ -18,14 +18,8 @@ import {
   SIGN_IN,
   SIGN_UP,
 } from '../../constants/path';
-import {
-  Initial,
-  ChooseLogin,
-  Input,
-  SignIn,
-  SignUp,
-} from '../../components/pages';
-import {Loading} from '../../containers';
+import {Initial, ChooseLogin, Input, SignUp} from '../../components/pages';
+import {Loading, SignIn} from '../../containers';
 import Home from './Home';
 import Statistics from './Statistics';
 import UserInfo from './UserInfo';
