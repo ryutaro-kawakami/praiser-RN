@@ -72,16 +72,8 @@ export default function Home(props: Props) {
   );
 
   return (
-    // <View style={styles.container} testID={testIDs.HOME}>
     <View style={styles.container}>
-      {/* <Todos isEditable todos={props.todos} actions={actions} /> */}
       <Todos isEditable todos={props.todos} actions={actions} />
-      {/* <TouchableOpacity
-        onPress={onPress}
-        style={styles.button}
-        testID={testIDs.TODO_OPEN_INPUT_BUTTON}>
-        <Icon color={COLOR.PRIMARY} size={24} name="plus" />
-      </TouchableOpacity> */}
       <TouchableOpacity onPress={onPress} style={styles.button}>
         <Icon color={COLOR.PRIMARY} size={24} name="plus" />
       </TouchableOpacity>

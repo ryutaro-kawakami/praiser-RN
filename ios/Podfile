@@ -6,7 +6,6 @@ platform :ios, '10.0'
 $RNFirebaseAnalyticsWithoutAdIdSupport=true
 
 target 'praiser' do
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   config = use_native_modules!
 

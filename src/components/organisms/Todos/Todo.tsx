@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 });
 
 export interface EditableActions {
-  toggleTodo?: DoneButton.ToggleTodo;
+  toggleTodo: DoneButton.ToggleTodo;
   removeTodo: DeleteButton.RemoveTodo;
   gotoDetail: GotoDetail;
 }
