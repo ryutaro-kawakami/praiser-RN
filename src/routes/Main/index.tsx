@@ -43,6 +43,7 @@ const drawerContentOptions = {
 };
 
 const getActiveRouteName = (state: any): string => {
+  console.log('state', state);
   if (!state || !state.routes) {
     return '';
   }
@@ -96,10 +97,11 @@ function TabRoutes() {
         },
       }}
       screenOptions={(props: any) => {
-        const routeName = getActiveRouteName(props.route.state);
+        // const routeName = getActiveRouteName(props.route.state);
 
         return {
-          tabBarVisible: routeName !== USER_INFO,
+          // tabBarVisible: routeName !== USER_INFO,
+          tabBarVisible: true,
         };
       }}>
       <Tab.Screen name={HOME} component={HomeWithDrawer} />
