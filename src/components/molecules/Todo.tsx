@@ -47,7 +47,7 @@ export default function TodoDisplay(props: Props) {
           <Text style={labelStyle}>{title}</Text>
           {!!detail && <Text style={styles.detail}>{detail}</Text>}
         </View>
-        <Icon name="angleright" size={32} color={COLOR.WHITE} />
+        <Icon name="angle-right" size={32} color={COLOR.WHITE} />
       </View>
     </TouchableHighlight>
   );
