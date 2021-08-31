@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {useRoute, RouteProp, useNavigation} from '@react-navigation/native';
+import {useRoute, RouteProp} from '@react-navigation/native';
 // import analytics from '@react-native-firebase/analytics';
 import TextField, {dismiss} from '../../atoms/TextField';
 import Button from '../../atoms/Button';
@@ -42,10 +42,10 @@ interface Params {
   detail: string;
 }
 
-export default function Detail() {
-  const {goBack} = useNavigation();
+export default function Detail(props: Props) {
   const {params} = useRoute<RouteProp<Record<string, Params>, string>>();
   const {
+    id,
     isEditable,
     title: titleInitialValue,
     detail: detailInitialValue,
@@ -54,20 +54,19 @@ export default function Detail() {
   const title = useControlledComponent(titleInitialValue);
   const detail = useControlledComponent(detailInitialValue);
 
-  // const {setSnackbar} = React.useContext(UiContext);
+  const {setSnackbar} = React.useContext(UiContext);
   const onSubmit = React.useCallback(() => {
-    goBack();
-    // props.actions.changeTodo(id, {
-    //   title: title.value,
-    //   detail: detail.value,
-    // });
-    // dismiss();
-    // setSnackbar({
-    //   visible: true,
-    //   message: 'edit is completed.',
-    //   label: 'Done',
-    // });
-  }, [goBack]);
+    props.actions.changeTodo(id, {
+      title: title.value,
+      detail: detail.value,
+    });
+    dismiss();
+    setSnackbar({
+      visible: true,
+      message: 'edit is completed.',
+      label: 'Done',
+    });
+  }, [title.value, detail.value, id, props.actions, setSnackbar]);
 
   // React.useEffect(() => {
   //   async function logViewItem() {

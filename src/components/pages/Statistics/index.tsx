@@ -15,20 +15,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const props = {
-  statistics: {
-    numofCompleted: 10,
-    numofAll: 25,
-    numofUncompleted: 15,
-    completedRatio: 0.4,
-    uncompletedRatio: 0.6,
-  },
-  histories: [
-    {id: '1', title: 'Todo1', detail: 'Done', isDone: true},
-    {id: '2', title: 'Todo2', detail: 'Done', isDone: true},
-  ],
-};
-
 interface Props {
   statistics: Statistic;
   histories: TodosState;
@@ -45,7 +31,8 @@ function Header(props: Props) {
   );
 }
 
-export default function Statistics() {
+export default function Statistics(props: Props) {
+  console.log('props.histories', props.histories);
   const {navigate} = useNavigation();
   const gotoDetail = React.useCallback(
     (state: Todo.State, isEditable: boolean) => {

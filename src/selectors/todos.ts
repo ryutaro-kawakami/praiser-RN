@@ -39,6 +39,7 @@ export const getStatistics = createSelector(
     const numofUncompleted = numofAll - numofCompleted;
     const completedRatio = round(numofCompleted / numofAll, 3);
     const uncompletedRatio = round(1 - completedRatio, 3);
+
     return {
       numofAll,
       numofCompleted,

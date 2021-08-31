@@ -11,7 +11,7 @@ import TextField, {dismiss} from '../../atoms/TextField';
 import Button from '../../atoms/Button';
 import {COLOR} from '../../../constants/theme';
 // import testIDs from '../../../constants/testIDs';
-// import {Todo} from '../../../domain/models';
+import {Todo} from '../../../domain/models';
 import {useControlledComponent} from '../../../lib/hooks/';
 
 const styles = StyleSheet.create({
@@ -36,13 +36,13 @@ const styles = StyleSheet.create({
   },
 });
 
-// interface Props {
-//   actions: {
-//     addTodo: (newValues: Todo.Values) => void;
-//   };
-// }
+interface Props {
+  actions: {
+    addTodo: (newValues: Todo.Values) => void;
+  };
+}
 
-export default function Input() {
+export default function Input(props: Props) {
   const title = useControlledComponent('');
   const detail = useControlledComponent('');
 
@@ -52,14 +52,14 @@ export default function Input() {
   }, [goBack]);
 
   const addTodo = React.useCallback(() => {
-    // props.actions.addTodo({
-    //   title: title.value,
-    //   detail: detail.value,
-    // });
+    props.actions.addTodo({
+      title: title.value,
+      detail: detail.value,
+    });
     back();
     title.onChangeText('');
     detail.onChangeText('');
-  }, [back, title, detail]);
+  }, [back, title, detail, props.actions]);
 
   return (
     <SafeAreaView style={styles.container}>
