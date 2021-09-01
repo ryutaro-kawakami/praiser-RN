@@ -39,7 +39,7 @@ function useUserInformation(setTodos: SetTodo) {
     setApplicationState(Status.UN_AUTHORIZED);
   }
 
-  function initialiseFirebaseAuthentication() {
+  function initialSetFirebaseAuthentication() {
     return new Promise((resolve, reject) => {
       firebase.auth().onAuthStateChanged(user => {
         if (!user) {
@@ -70,8 +70,8 @@ function useUserInformation(setTodos: SetTodo) {
       }
 
       setUserState(userInformation);
-      await initialiseFirebaseAuthentication();
-    } catch (e) {
+      await initialSetFirebaseAuthentication();
+    } catch (e: any) {
       setError(e);
     }
   }

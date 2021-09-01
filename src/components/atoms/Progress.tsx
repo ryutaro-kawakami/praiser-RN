@@ -9,6 +9,7 @@ interface Props {
 }
 export default function Progress(props: Props) {
   const {value} = props;
+
   return (
     <ProgressCircle
       style={styles.progress}

@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-
 import Todos, {Todo, State as TodosState} from '../../organisms/Todos';
 import ProgressPanel, {Statistic} from '../../molecules/ProgressPanel';
 import {DETAIL} from '../../../constants/path';
@@ -32,7 +31,6 @@ function Header(props: Props) {
 }
 
 export default function Statistics(props: Props) {
-  console.log('props.histories', props.histories);
   const {navigate} = useNavigation();
   const gotoDetail = React.useCallback(
     (state: Todo.State, isEditable: boolean) => {
