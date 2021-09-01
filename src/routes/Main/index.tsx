@@ -6,6 +6,7 @@ import {
 import {COLOR} from '../../constants/theme';
 import {headerStyle, headerTintColor} from '../Header';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {
   INITIAL,
@@ -40,21 +41,6 @@ const drawerStyle = {
 const drawerContentOptions = {
   activeTintColor: COLOR.PRIMARY,
   inactiveTintColor: COLOR.WHITE,
-};
-
-const getActiveRouteName = (state: any): string => {
-  console.log('state', state);
-  if (!state || !state.routes) {
-    return '';
-  }
-
-  const route = state.routes[state.index];
-
-  if (route.state) {
-    return getActiveRouteName(route.state);
-  }
-
-  return route.name;
 };
 
 const forFade = ({current}: StackCardInterpolationProps) => ({
@@ -96,12 +82,11 @@ function TabRoutes() {
           backgroundColor: COLOR.MAIN,
         },
       }}
-      screenOptions={(props: any) => {
-        // const routeName = getActiveRouteName(props.route.state);
+      screenOptions={({route}) => {
+        const routeName = getFocusedRouteNameFromRoute(route);
 
         return {
-          // tabBarVisible: routeName !== USER_INFO,
-          tabBarVisible: true,
+          tabBarVisible: routeName !== USER_INFO,
         };
       }}>
       <Tab.Screen name={HOME} component={HomeWithDrawer} />
